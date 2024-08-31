@@ -5,7 +5,7 @@ type Props = {
 
 export default function Footer() {
   return (
-    <footer className="bg-gypsum mt-auto border-green-600 border-t-4">
+    <footer className="bg-slate-300 mt-auto border-green-600 ">
       <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex justify-center space-x-6 md:order-2">
   

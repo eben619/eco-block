@@ -31,15 +31,13 @@ export default function Header() {
   const renderContent = () => {
     switch (activeTab) {
       case "Home":
-        return <div className=""><HomeContent/></div>;
+        return <div><HomeContent/></div>;
       case "Sorting Guide":
         return <div><SortingGuideContent/></div>;
       case "Request Pickup":
         return <div><RequestPickup/></div>;
       case "Dashboard":
         return <div>Dashboard Content</div>;
-      case "Community Connect":
-        return <div>Community Connect Content</div>;
       default:
         return <div>Home Content</div>;
     }
@@ -86,7 +84,7 @@ export default function Header() {
                     />
                   </div>
                   <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-around">
-                    {["Home", "Sorting Guide", "Request Pickup", "Dashboard", "Community Connect"].map((tab) => (
+                    {["Home", "Sorting Guide", "Request Pickup", "Dashboard"].map((tab) => (
                       <a
                         key={tab}
                         href="#"
@@ -123,7 +121,7 @@ export default function Header() {
 
             <Disclosure.Panel className="sm:hidden">
               <div className="space-y-1 pt-2 pb-4">
-                {["Home", "Sorting Guide", "Partners", "Dashboard", "Community Connect"].map((tab) => (
+                {["Home", "Sorting Guide", "Request Pickup", "Dashboard"].map((tab) => (
                   <Disclosure.Button
                     key={tab}
                     as="a"

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount } from 'wagmi';
 
 export default function RequestPickup() {
@@ -23,14 +22,16 @@ export default function RequestPickup() {
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto bg-white rounded-lg shadow-md">
+    <div className="flex items-center justify-center h-screen">
       {!isConnected && (
-        <div className="flex justify-center mb-4">
-          <ConnectButton showBalance={false} />
+        <div className="text-center">
+          <p className="text-xl font-bold text-red-600">
+            Please connect your wallet to request a pickup
+          </p>
         </div>
       )}
       {isConnected && (
-        <>
+        <div className="p-6 max-w-md mx-auto bg-white rounded-lg shadow-md">
           <h2 className="text-2xl font-bold text-green-600 mb-4 text-center">Request Waste Pickup</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
@@ -82,7 +83,7 @@ export default function RequestPickup() {
               </button>
             </div>
           </form>
-        </>
+        </div>
       )}
     </div>
   );

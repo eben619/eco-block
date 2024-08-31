@@ -25,7 +25,7 @@ export default function HomeContent() {
             </h1>
 
             <p className="text-lg text-gray-700 mb-6 text-center">
-                EcoBlock is your comprehensive platform for managing waste sustainably. We connect individuals and businesses with waste disposal companies that specialize in different types of waste, ensuring that materials are properly sorted and recycled in an environmentally friendly way.
+                EcoBlock is your comprehensive platform for managing waste sustainably. We connect individuals and businesses with waste disposal companies that specialize in different types of waste, ensuring that materials are properly sorted and recycled in an environmentally friendly way.Join us in making the world a cleaner place. Whether you're an individual looking to manage your household waste better or a business aiming to improve your waste management practices, EcoBlock has the tools you need.
             </p>
 
             <div className="p-6">
@@ -45,12 +45,7 @@ export default function HomeContent() {
                 </div>
             </div>
 
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                Get Involved
-            </h2>
-            <p className="text-lg text-gray-700">
-                Join us in making the world a cleaner place. Whether you're an individual looking to manage your household waste better or a business aiming to improve your waste management practices, EcoBlock has the tools you need.
-            </p>
+            
         </div>
     );
 }
