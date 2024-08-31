@@ -8,14 +8,17 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useConnect } from "wagmi";
 import { injected } from "wagmi/connectors";
+import HomeContent from "@/tabs/HomeContent";
+import SortingGuideContent from "@/tabs/SortingGuideContent";
+import RequestPickup from "@/tabs/RequestPickup";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [hideConnectBtn, setHideConnectBtn] = useState(false);
+  const [activeTab, setActiveTab] = useState("Home"); // Active tab state
   const { account, connected, lookupAddress } = useSocialConnect();
 
   const { data: session } = useSession();
-
   const { connect } = useConnect();
 
   useEffect(() => {
@@ -25,6 +28,23 @@ export default function Header() {
     }
   }, [connect]);
 
+  const renderContent = () => {
+    switch (activeTab) {
+      case "Home":
+        return <div className=""><HomeContent/></div>;
+      case "Sorting Guide":
+        return <div><SortingGuideContent/></div>;
+      case "Request Pickup":
+        return <div><RequestPickup/></div>;
+      case "Dashboard":
+        return <div>Dashboard Content</div>;
+      case "Community Connect":
+        return <div>Community Connect Content</div>;
+      default:
+        return <div>Home Content</div>;
+    }
+  };
+
   return (
     <>
       <SocialConnectUI
@@ -33,14 +53,14 @@ export default function Header() {
           setIsOpen(false);
         }}
       />
-      <Disclosure as="nav" className="bg-prosperity border-b border-black">
+      <Disclosure as="nav" className="bg-slate-300 border-green-600">
         {({ open }) => (
           <>
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
               <div className="relative flex h-16 justify-between">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   {/* Mobile menu button */}
-                  <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-black focus:outline-none focus:ring-1 focus:ring-inset focus:rounded-none focus:ring-black">
+                  <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-green-600 focus:outline-none focus:ring-1 focus:ring-inset focus:rounded-none focus:ring-green-600">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
                       <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -50,22 +70,34 @@ export default function Header() {
                   </Disclosure.Button>
                 </div>
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                  <div className="px-2 self-center font-bold text-lg">
+                    <p>
+                      <span className="text-green-600">Eco</span>
+                      <span className="">Block</span>
+                    </p>
+                  </div>
                   <div className="flex flex-shrink-0 items-center">
                     <Image
-                      className="block h-8 w-auto sm:block lg:block"
-                      src="/logo.svg"
+                      className="block h-14 w-auto sm:block lg:block"
+                      src="/ecoblock.png"
                       width="24"
                       height="24"
-                      alt="Celo Logo"
+                      alt=""
                     />
                   </div>
-                  <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                    <a
-                      href="#"
-                      className="inline-flex items-center border-b-2 border-black px-1 pt-1 text-sm font-medium text-gray-900"
-                    >
-                      Home
-                    </a>
+                  <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-around">
+                    {["Home", "Sorting Guide", "Request Pickup", "Dashboard", "Community Connect"].map((tab) => (
+                      <a
+                        key={tab}
+                        href="#"
+                        onClick={() => setActiveTab(tab)}
+                        className={`inline-flex items-center px-1 pt-1 text-gray-900 font-bold text-lg ${
+                          activeTab === tab ? "border-b-2 border-green-600" : ""
+                        }`}
+                      >
+                        {tab}
+                      </a>
+                    ))}
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -91,19 +123,27 @@ export default function Header() {
 
             <Disclosure.Panel className="sm:hidden">
               <div className="space-y-1 pt-2 pb-4">
-                <Disclosure.Button
-                  as="a"
-                  href="#"
-                  className="block border-l-4 border-black py-2 pl-3 pr-4 text-base font-medium text-black"
-                >
-                  Home
-                </Disclosure.Button>
-                {/* Add here your custom menu elements */}
+                {["Home", "Sorting Guide", "Partners", "Dashboard", "Community Connect"].map((tab) => (
+                  <Disclosure.Button
+                    key={tab}
+                    as="a"
+                    href="#"
+                    onClick={() => setActiveTab(tab)}
+                    className={`block border-l-4 py-2 pl-3 pr-4 text-base font-medium text-black ${
+                      activeTab === tab ? "border-green-600" : "border-transparent"
+                    }`}
+                  >
+                    {tab}
+                  </Disclosure.Button>
+                ))}
               </div>
             </Disclosure.Panel>
           </>
         )}
       </Disclosure>
+
+      {/* Render the content of the active tab */}
+      <div className="p-4">{renderContent()}</div>
     </>
   );
 }

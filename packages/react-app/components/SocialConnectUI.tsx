@@ -20,7 +20,6 @@ const SocialConnectUI: React.FC<Props> = ({ isOpen, closeModal }) => {
     setLoading(true);
     const addresses = await lookupAddress((session as any)?.username);
     console.log(
-      "🚀 ~ file: SocialConnectUI.tsx:22 ~ getLookupAddress ~ addresses:",
       addresses
     );
     setLoading(false);
