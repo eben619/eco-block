@@ -1,7 +1,7 @@
 
-# eco-block
+# Ecoblock
 
-eco-block is a waste management supply chain system where users are incentivized to sort their waste to be recycled effectively by waste companies. The goal is to create a greener world with less plastics and organic waste.
+Ecoblock is a waste management supply chain system where users are incentivized to sort their waste to be recycled effectively by waste companies. The goal is to create a greener world with less plastics and organic waste.
 
 ## Table of Contents
 
