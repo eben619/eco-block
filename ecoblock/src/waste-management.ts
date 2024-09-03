@@ -4,7 +4,7 @@ import {
   PickupCompleted as PickupCompletedEvent,
   PickupRejected as PickupRejectedEvent,
   PickupRequested as PickupRequestedEvent,
-  RewardDistributed as RewardDistributedEvent
+  RewardDistributed as RewardDistributedEvent,
 } from "../generated/WasteManagement/WasteManagement"
 import {
   CompanyAdded,
@@ -12,12 +12,12 @@ import {
   PickupCompleted,
   PickupRejected,
   PickupRequested,
-  RewardDistributed
+  RewardDistributed,
 } from "../generated/schema"
 
 export function handleCompanyAdded(event: CompanyAddedEvent): void {
   let entity = new CompanyAdded(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
   entity.companyId = event.params.companyId
   entity.name = event.params.name
@@ -32,7 +32,7 @@ export function handleCompanyAdded(event: CompanyAddedEvent): void {
 
 export function handlePickupCanceled(event: PickupCanceledEvent): void {
   let entity = new PickupCanceled(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
   entity.requestId = event.params.requestId
   entity.requester = event.params.requester
@@ -46,7 +46,7 @@ export function handlePickupCanceled(event: PickupCanceledEvent): void {
 
 export function handlePickupCompleted(event: PickupCompletedEvent): void {
   let entity = new PickupCompleted(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
   entity.requestId = event.params.requestId
   entity.requester = event.params.requester
@@ -62,7 +62,7 @@ export function handlePickupCompleted(event: PickupCompletedEvent): void {
 
 export function handlePickupRejected(event: PickupRejectedEvent): void {
   let entity = new PickupRejected(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
   entity.requestId = event.params.requestId
   entity.requester = event.params.requester
@@ -77,7 +77,7 @@ export function handlePickupRejected(event: PickupRejectedEvent): void {
 
 export function handlePickupRequested(event: PickupRequestedEvent): void {
   let entity = new PickupRequested(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
   entity.requestId = event.params.requestId
   entity.requester = event.params.requester
@@ -95,7 +95,7 @@ export function handlePickupRequested(event: PickupRequestedEvent): void {
 
 export function handleRewardDistributed(event: RewardDistributedEvent): void {
   let entity = new RewardDistributed(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
   entity.user = event.params.user
   entity.points = event.params.points
