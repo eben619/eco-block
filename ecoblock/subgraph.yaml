@@ -1,0 +1,41 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: WasteManagement
+    network: sepolia
+    source:
+      address: "0x510656370abAe7ed4323f7130881C39814Aa3c6e"
+      abi: WasteManagement
+      startBlock: 6605146
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CompanyAdded
+        - PickupCanceled
+        - PickupCompleted
+        - PickupRejected
+        - PickupRequested
+        - RewardDistributed
+      abis:
+        - name: WasteManagement
+          file: ./abis/WasteManagement.json
+      eventHandlers:
+        - event: CompanyAdded(uint256,string,address)
+          handler: handleCompanyAdded
+        - event: PickupCanceled(uint256,indexed address)
+          handler: handlePickupCanceled
+        - event: PickupCompleted(uint256,indexed address,string,string[])
+          handler: handlePickupCompleted
+        - event: PickupRejected(uint256,indexed address,string)
+          handler: handlePickupRejected
+        - event: PickupRequested(uint256,indexed address,string,string[],uint256,uint256)
+          handler: handlePickupRequested
+        - event: RewardDistributed(indexed address,uint256)
+          handler: handleRewardDistributed
+      file: ./src/waste-management.ts

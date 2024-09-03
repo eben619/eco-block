@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "WasteManagement": {
+      "address": "0x510656370abAe7ed4323f7130881C39814Aa3c6e",
+      "startBlock": 6605146
+    }
+  }
+}

@@ -1,0 +1,61 @@
+type CompanyAdded @entity(immutable: true) {
+  id: Bytes!
+  companyId: BigInt! # uint256
+  name: String! # string
+  walletAddress: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PickupCanceled @entity(immutable: true) {
+  id: Bytes!
+  requestId: BigInt! # uint256
+  requester: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PickupCompleted @entity(immutable: true) {
+  id: Bytes!
+  requestId: BigInt! # uint256
+  requester: Bytes! # address
+  gpsAddress: String! # string
+  wasteTypes: [String!]! # string[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PickupRejected @entity(immutable: true) {
+  id: Bytes!
+  requestId: BigInt! # uint256
+  requester: Bytes! # address
+  rejectionReason: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PickupRequested @entity(immutable: true) {
+  id: Bytes!
+  requestId: BigInt! # uint256
+  requester: Bytes! # address
+  gpsAddress: String! # string
+  wasteTypes: [String!]! # string[]
+  pickupDate: BigInt! # uint256
+  pickupTime: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RewardDistributed @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  points: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
