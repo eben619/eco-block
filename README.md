@@ -106,7 +106,7 @@ The smart contract associated with this project is deployed at the following add
 
 ## Transaction Hash
 
-The transaction associated with the deployment or significant interaction with the contract is recorded with the following hash:
+The transaction associated with the deployment or significant interaction with the contract is recorded with the following hashes:
 
 ```
 0xf9e2a9f8b3c6d3d25a0446d8efa42019337a0e7a6d209b231c84001ee62ab3bc
